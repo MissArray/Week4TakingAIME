@@ -8,8 +8,11 @@ const {
 const router = (request, response) => {
   const url = request.url;
 
+  //If you find any directories or files, execute one or more of the handler functions
   if (url === "/") {
     handleHomeRoute(request, response, url);
+
+    //If you find a match - or rather, if you don't find a non-match - for the `public` directory, handle the request to that dir and send a response; do the same for the `submit` function and the query in the autocomplete form
   } else if (url.indexOf("/public/") !== -1) {
     handlePublic(request, response, url);
   } else if (url.indexOf("&submit=true") !== -1) {
